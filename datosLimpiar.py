@@ -98,6 +98,12 @@ print("datoslimpios:")
 print(df.head(10))
 print("="*60)
 
+# no formato de fecha
+for col in df.columns:
+    if 'fecha' in col:
+        if pd.api.types.is_datetime64_any_dtype(df[col]):
+            df[col] = df[col].dt.strftime('%Y-%m-%d')
+
 # guardar limpio
 salida = "P_agresora_Tlaxcala_limpio.xlsx"
 df.to_excel(salida, index=False)
