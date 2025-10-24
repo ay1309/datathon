@@ -30,6 +30,7 @@ df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
 valores_por_defecto = {
     'agresores_localidad': 'desconocido',
     'agresores_municipio': 'desconocido',
+    'agresores_vinculo': 'desconocido',
     'agresores_entidad': 'desconocido',
     'agresores_escolaridad': 'desconocido',
     'agresores_ocupacion': 'desconocido',
