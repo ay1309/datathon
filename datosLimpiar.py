@@ -28,10 +28,22 @@ df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
 
 # aqui es donde le cambiamos lo que estpe vació
 valores_por_defecto = {
-    'municipio': 'desconocido',
-    'sexo': 'no especificado',
+    'agresores_localidad': 'desconocido',
+    'agresores_municipio': 'desconocido',
+    'agresores_entidad': 'desconocido',
+    'agresores_escolaridad': 'desconocido',
+    'agresores_ocupacion': 'desconocido',
+    'agresores_ingreso': 'desconocido',
+    'agresores_orientacion_sexual': 'no especificado',
+    'agresores_identidad_genero': 'no especificado',
+    'agresores_sexo': 'no especificado',
+    'victima_sexo': 'no especificado',
     'tipo_de_violencia': 'no especificado',
-    'edad': np.nan
+    'victima_orientacion_sexual': 'no especificado',
+    'victima_identidad_genero': 'no especificado',
+    'agresores_orientacion_sexual': 'no especificado',
+    'agresores_edad': np.nan,
+    'victima_edad': np.nan
 }
 for col, val in valores_por_defecto.items():
     if col in df.columns:
