@@ -43,6 +43,8 @@ valores_por_defecto = {
     'victima_orientacion_sexual': 'no especificado',
     'victima_identidad_genero': 'no especificado',
     'agresores_orientacion_sexual': 'no especificado',
+    'tipo_agresor_sexual': 'no especificado',       # temporal
+    'acoso_hostigamiento': 'no especificado',       # igual tenmporal
     'agresores_edad': np.nan,
     'victima_edad': np.nan
 }
