@@ -86,6 +86,36 @@ if 'tipo_de_violencia' in df.columns:
         'economica': 'económica'
     })
 
+
+# CONVERTIR EDADES A NUMÉRICO Y LIMPIAR ERRORES
+if 'victima_edad' in df.columns:
+    df['victima_edad'] = pd.to_numeric(df['victima_edad'], errors='coerce')
+    df.loc[(df['victima_edad'] <= 0) | (df['victima_edad'] >= 120), 'victima_edad'] = np.nan
+
+if 'agresores_edad' in df.columns:
+    df['agresores_edad'] = pd.to_numeric(df['agresores_edad'], errors='coerce')
+    df.loc[(df['agresores_edad'] <= 0) | (df['agresores_edad'] >= 120), 'agresores_edad'] = np.nan
+
+
+print("Antes de imputar:")
+print(f"Víctimas con edad nula: {df['victima_edad'].isnull().sum()}")
+print(f"Agresores con edad nula: {df['agresores_edad'].isnull().sum()}")
+
+# imputar edades con mediana
+if 'victima_edad' in df.columns:
+    mediana_victima = df['victima_edad'].median()
+    df['victima_edad'].fillna(mediana_victima, inplace=True)
+    print(f"Mediana edad víctimas: {mediana_victima}")
+
+if 'agresores_edad' in df.columns:
+    mediana_agresor = df['agresores_edad'].median()
+    df['agresores_edad'].fillna(mediana_agresor, inplace=True)
+    print(f"Mediana edad agresores: {mediana_agresor}")
+
+print("\nDespués de imputar:")
+print(f"Víctimas con edad nula: {df['victima_edad'].isnull().sum()}")
+print(f"Agresores con edad nula: {df['agresores_edad'].isnull().sum()}")
+
 # errores 
 if 'edad' in df.columns:
     df['edad'] = pd.to_numeric(df['edad'], errors='coerce')
